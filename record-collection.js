@@ -36,7 +36,7 @@ function updateRecords(records, id, prop, value) {
     delete records[id][prop];
   }
   return records;
-}
+};
 
 updateRecords(recordCollection, 5439, 'artist', 'ABBA');
 console.log(recordCollection);
