@@ -54,4 +54,4 @@ se value == ' ' apagar [prop]
 
 // eu preciso achar outra forma de criar uma nova propriedade
 // eu preciso criar essa nova propriedade primeiro e, só depois, inserir o valor
-// o código não está entendendo o que é 'prop'
+// o código não está entendendo o que é 'prop' -----
