@@ -25,39 +25,27 @@ const contacts = [
     },
 ];
 
-
 function lookUpProfile(name, prop) {
-
+    let contactProp = '';
+    let contactName = '';
     for (i = 0; i < 4; i++) {
-        let contactName = '';
-        let contactProp = '';
-
-        if (contacts[i].firstName == name) {
-            contactName = contacts[i].firstName;
-            for (j = 0; j < contacts[i].length; j++) {
-                if (contacts[i][j] == prop) {
-                    contactProp = contacts[i][prop]
-                    return contactProp;
-                }
-            }
+        if (contacts[i].firstName === name) {
+            contactName = name;
+            contactProp = contacts[i][prop];
         }
-        else if (contactName == '') {
-            return 'No such contact';
-        }
-        else if (contactProp == '') {
-            return 'No such property';
-        }
+    }
+    if (contactName === '') {
+        console.log('No such name');
+    } else {
+        console.log(contactProp || 'No such property') 
     }
 }
 
-
-lookUpProfile('Akira', 'likes');
+lookUpProfile('Harry', 'likes');
 
 /*
-Antes de mais nada, a função deve:
+A função deve:
 1. checar se <name> está na lista de contatos (em <firstName>) /false: return 'No such contact'
 2. checar se <prop> é uma propriedade do contato em questão /false: return 'No such property'.
-
-Se ambos forem verdade, a função deve:
-1. retornar o valor da propriedade <prop> do contato em questão.
+3. retornar o valor da propriedade <prop> do contato em questão.
 */
