@@ -20,15 +20,36 @@ console.log(terrier.numEyes); // 2
 // Inheritance
 function Animal() {}; // Parent
 Animal.prototype = {
-    eat: function() {console.log('nom nom nom')}
+    eat: function() {console.log('nom nom nom')} // Parent method
 }
 
 function Cat() {}; // Child
 Cat.prototype = Object.create(Animal.prototype); 
 Cat.prototype.constructor = Cat; 
 
-let sphynx = new Cat;
-console.log(sphynx.eat());
+let sphynx = new Cat; // Creating an object instance of Cat
 
-Cat.prototype.meow = function() {console.log('Meow Meow')};
+Cat.prototype.meow = function() {console.log('Meow Meow')}; // Creating a child method
+console.log(sphynx.eat());
 console.log(sphynx.meow());
+
+// Using Closure to protect properties from being modified externally
+function Bird() {
+    let weight = 15;
+    this.getWeight = function () {return weight};
+}
+let ducky = new Bird();
+console.log(ducky.getWeight());
+
+// Immediately Invoked Function Expression (IIFE):
+(function () {
+    console.log("Chirp, chirp!");
+})();
+
+// Creating a Module with IIFE
+let funModule = (function() {
+    return {
+      isCuteMixin: function(obj) {obj.isCute = function() {return true}},
+      singMixin: function(obj) {obj.sing = function() {console.log("Singing to an awesome tune")}}
+    } 
+})();
