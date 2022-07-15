@@ -2,9 +2,7 @@
 // (decimal numbers are not integers) when an array of real numbers is passed to it.
 
 const squareList = arr => {
-    const filteredList = arr.filter(num => num > 0 && Number.isInteger(num));
-    let finalList = filteredList.map(a => a * a);
-    return finalList;
+    return arr.filter(num => num > 0 && Number.isInteger(num)).map(a => a * a);
 }
 
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
