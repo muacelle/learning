@@ -1,7 +1,17 @@
 function pairElement(str) {
     let arr = [];
     for (let i = 0; i < str.length; i++) {
-        str[i] == 'G' ? arr.push(['G', 'C']) : str[i] == 'C' ? arr.push(['C', 'G']) : str[i] == 'T' ? arr.push(['T', 'A']) : arr.push(['A', 'T'])
+        switch (str[i]) {
+            case 'G' : arr.push(['G', 'C']);
+            break;
+            case 'C' : arr.push(['C', 'G']);
+            break;
+            case 'T' : arr.push(['T', 'A']);
+            break;
+            case 'A' : arr.push(['A', 'T']);
+            break;
+            default: console.log('Entrada inválida');
+        }
     }
     return arr;
 }
