@@ -30,22 +30,40 @@ function convertToRoman(num) {
         nums.push(str[i]);
     }
     const casas = casaDec(nums);
-
+    let result = resultArr(casas, romNums);
+    return result.join('');
 }
 
 function resultArr(arr, obj) {
     let result = [];
-    for (i = 0; i < arr.length; i++) {
-        for (j = 0; j < obj.length; j++) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < 13; j++) {
             if (arr[i] >= Object.keys(obj)[j] && arr[i] < Object.keys(obj)[j+1]) {
-                result.push(Object.values(obj)[j]);
+                if (arr[i] == Object.keys(obj)[j]) {
+                    result.push(Object.values(obj)[j]);
+                } 
+                else {
+                    result.push(Object.values(obj)[j]);
+                    let n = (arr[i] - Object.keys(obj)[j]);        
+                    while (n > 3) {
+                        result.push(Object.values(obj)[j]);
+                        n = n - Object.keys(obj)[j];
+                    }
+                    while (n > 0 && n <= 3) {
+                        result.push('I')
+                        n--;
+                    }
+                }
             }
         }
     }
+    return result;
 }
+
+console.log(convertToRoman(510));
 
 // conditional: romNums[1] <= casas[0] < romNums[2] ? result.push(romNums[1])
 // match? map? filter? 2D for?
 
-//result = [C, X, X, X, V, I]
+// result = [C, X, X, X, V, I]
 // trabalhar com o resto de cada até o resto ser 0
