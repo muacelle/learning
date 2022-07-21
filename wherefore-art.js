@@ -1,13 +1,14 @@
 function whatIsInAName(collection, source) {
-    const sourceKeys = Object.keys(source);
-    return collection.filter(obj => {            
-        let objKeys = Object.keys(obj);
-        if (objKeys.includes(sourceKeys)) {     
-            return true;
+    const keys = Object.keys(source); // ['apple', 'bat']
+
+    return collection.filter((obj) => {
+        for (let prop in keys) {
+            if (obj.hasOwnProperty(prop) && obj[prop] == source[prop]) {
+                return true;
+            }
         }
-        return false;
-    })
-};
+    });
+}
     
 console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], 
 { "apple": 1, "bat": 2 }));
