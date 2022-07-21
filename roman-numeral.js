@@ -1,4 +1,4 @@
-const romNums = {
+const romanNumbersList = {
     1: 'I',
     4: 'IV',
     5: 'V',
@@ -14,56 +14,41 @@ const romNums = {
     1000: 'M'
 }
 
-function casaDec(arr) {
-    let multiplicator = 1;
-    for (let i = arr.length - 1; i >= 0; i--) {
-        arr[i] = arr[i] * multiplicator;
-        multiplicator *= 10;
-    }
-    return arr;
+function getNumberByPosition(number) {
+    let numberSequence = number.toString().split('');
+    console.log(numberSequence)                                // [ '2', '1', '8' ]
+    let multiplier = Math.pow(10, numberSequence.length - 1);
+    console.log(multiplier)                                    // 100
+    
+    return numberSequence.map((elem) => {
+        const numberByPosition = {
+        amount: elem,
+        positionHouse: multiplier
+        };
+        multiplier /= 10;
+        console.log(numberByPosition)                          // { amount: '2', positionHouse: 100 }, { amount: '1', positionHouse: 10 }, { amount: '8', positionHouse: 1 }
+        return numberByPosition;              
+    });
 }
-
-function convertToRoman(num) {
-    const str = num.toString();
-    let nums = [];
-    for (let i = 0; i < str.length; i++) {
-        nums.push(str[i]);
+  
+function getRomanNumber(position, amount) {
+    let number = romanNumbersList[amount * position];          // 200, 10, 4
+    if (number) {    
+        console.log(number);                                          
+        return number;                                         // 10: X
+    } else if (amount < 5) {
+        console.log(number)
+        return romanNumbersList[position].repeat(amount);      // 200: 100 (C) -> repeat -> 100 (C) = CC
     }
-    const casas = casaDec(nums);
-    let result = resultArr(casas, romNums);
-    return result.join('');
+    console.log(number)
+    return romanNumbersList[5 * position] + romanNumbersList[position].repeat(amount % 5);     // (5 * 1 = 5) + I repeat 3 = VIII
 }
-
-function resultArr(arr, obj) {
-    let result = [];
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < 13; j++) {
-            if (arr[i] >= Object.keys(obj)[j] && arr[i] < Object.keys(obj)[j+1]) {
-                if (arr[i] == Object.keys(obj)[j]) {
-                    result.push(Object.values(obj)[j]);
-                } 
-                else {
-                    result.push(Object.values(obj)[j]);
-                    let n = (arr[i] - Object.keys(obj)[j]);        
-                    while (n > 3) {
-                        result.push(Object.values(obj)[j]);
-                        n = n - Object.keys(obj)[j];
-                    }
-                    while (n > 0 && n <= 3) {
-                        result.push('I')
-                        n--;
-                    }
-                }
-            }
-        }
-    }
-    return result;
+  
+function convertToRoman(number) {
+    const numberByPosition = getNumberByPosition(number);
+    
+    return numberByPosition.map(elem =>
+        getRomanNumber(elem.positionHouse, elem.amount)).join('');
 }
-
-console.log(convertToRoman(510));
-
-// conditional: romNums[1] <= casas[0] < romNums[2] ? result.push(romNums[1])
-// match? map? filter? 2D for?
-
-// result = [C, X, X, X, V, I]
-// trabalhar com o resto de cada até o resto ser 0
+  
+console.log(convertToRoman(218));
