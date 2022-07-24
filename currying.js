@@ -7,10 +7,8 @@ function addTogether() {
     }
     else if (arguments.length == 1 && typeof arguments[0] == 'number') {
         const arr = [...arguments];
-        return function addNum(num) {
-            return addTogether(arr[0], num)
-        }
+        return (num) => addTogether(arr[0], num);   
     }
 }
   
-console.log(addTogether('n'));
+console.log(addTogether(2)(8));
