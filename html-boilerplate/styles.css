@@ -1,0 +1,14 @@
+h1 {
+    color: royalblue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p {
+    background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+ul, ol {
+    font-family: 'Courier New', Courier, monospace;
+}
