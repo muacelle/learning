@@ -25,20 +25,20 @@
 
 <script>
 
-    const getmesbtn = document.getElementById('getMessage');
-    const mes = document.getElementsByClassName('message')[0];
+  const getmesbtn = document.getElementById("getMessage");
+  const mes = document.getElementsByClassName("message")[0];
 
-    getmesbtn.onclick = () => {
-        const req = new XMLHttpRequest();
-        req.open('GET', '/json/cats.json', true);
-        req.send();
-        req.onload = () => {
-            const json = json.parse(req.responseText);
-            mes.innerHTML = JSON.stringify(json);
-        }
+  getmesbtn.onclick = () => {
+    const req = new XMLHttpRequest();                   // new instance of XMLHttpRequest object
+    req.open('GET', '/json/cats.json', true);           // open method initializes a request GET -> url API -> true makes it an asynchronous request
+    req.send();                                         // send the request
+    req.onload = () => {                                // onload event handler 
+      const json = json.parse(req.responseText);        // parses the returned data
+      mes.innerHTML = JSON.stringify(json);             // convert the JS object into a string + inserts string as the message text
     }
+  }
 
-    // getmesbtn.addEventListener('click', () => {mes.textContent = "Here is the message"});
+  getmesbtn.addEventListener('click', () => {mes.textContent = "Here is the message"});
 
 </script>
   
