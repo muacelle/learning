@@ -34,11 +34,25 @@
     req.send();                                         // send the request
     req.onload = () => {                                // onload event handler 
       const json = json.parse(req.responseText);        // parses the returned data
-      mes.innerHTML = JSON.stringify(json);             // convert the JS object into a string + inserts string as the message text
+      mes.innerHTML = JSON.stringify(json);             // convert the JSON into a string + inserts string as the message text
     }
   }
 
-  getmesbtn.addEventListener('click', () => {mes.textContent = "Here is the message"});
+  // Another Way! Using fetch method:
+  
+  fetch('/json/cats.json')                                    // makes a GET request to the url
+    .then(response => response.json())                        // takes response and converts it to JSON
+    .then(data => { mes.innerHTML = JSON.stringify(data)      // converts the JSON into a string + inserts string as the message text
+  })
+
+
+  // Faking it:
+
+  const fakejson = [{"id":0,"imageLink":"https://s3.amazonaws.com/freecodecamp/funny-cat.jpg","altText":"A white cat wearing a green, helmet shaped melon on its head. ","codeNames":["Juggernaut","Mrs. Wallace","Buttercup"]}];
+  
+  console.log(fakejson[0].altText); // "A white cat wearing a green, helmet shaped melon on its head."
+  
+  getmesbtn.addEventListener('click', () => {mes.textContent = JSON.stringify(fakejson)});
 
 </script>
   
