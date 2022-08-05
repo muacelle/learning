@@ -5,24 +5,22 @@ async function start() {
     createBreedList(data.message)
 }
 
-function createBreedList(breedList) {
-    const options = document.getElementById('breed');
+function createBreedList(breedList) {                     // 11?
+    const options = document.getElementById('breed');    
     options.innerHTML = `
     <select onchange="loadBreed(this.value)">
         <option>Choose a dog breed</option>
         ${Object.keys(breedList).map((breed) => {
             return `<option>${breed}</option>`
         })}
-    </select>
-    `
+    </select>`
 }
 
 async function loadBreed(value) {
     if (value !== 'Choose a dog breed') {
         const response = await fetch(`https://dog.ceo/api/breed/${value}/images/random`);
         const data = await response.json();
-        const imgsrc = data.message;
-        getDog(imgsrc)
+        getDog(data.message);
     }
 }
 
