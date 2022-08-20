@@ -20,7 +20,7 @@ try {
 
 }
 
-// console.log('...Then the execution continues.')
+console.log('...Then the execution continues.')
 
 /* for the try/catch to work, the code must be runnable. 
 It should be valid Javascript - it won't work if the syntax is wrong. */
@@ -39,8 +39,6 @@ try {
 
 } catch(err) {
 
-    console.log('JSON Error: ' + err.message); // ocorrendo qualquer erro, seja ele criado ou não, vai aparecer aqui.
+    console.log(err.message); // ocorrendo qualquer erro, seja ele criado ou não, vai aparecer aqui.
 
 }
-
-// error Object
