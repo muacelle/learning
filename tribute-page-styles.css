@@ -1,4 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    border: 10px;
+    background: white;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
+}
+
+.container {
     background: #eee;
+    width: 98%;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+header {
+    text-align: center;
+}
+
+.picture {
+    background: white;
+    width: 98%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.timeline {
+    width: 620px;
+    margin: 0 auto;
+}
+
+.timeline h3 {
+    text-align: center;
+}
+
+.timeline ul {
+    margin: 0 0 0 -25px;
+}
+
+.quote {
+    font-style: italic;
+    width: 620px;
+    margin: 40px auto;
+    text-align: left;
+}
+
+.quote p {
+    line-height: 150%;
+}
+
+.final-message {
+    text-align: center;
+    margin: 20px auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    padding-top: 40px;
+    margin-bottom: 0;
+}
+
+h1, h3 {
+    color: #333;
+}
+
+.picture p {
+    padding-bottom: 20px;
+}
+
+h3 {
+    padding: 40px;
+}
+
+.timeline li {
+    padding: 10px;
+    line-height: 150%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+a {
+    color: #477ca7;
+    text-decoration: none;
 }
