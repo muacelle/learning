@@ -1,3 +1,4 @@
+// A react component:
 
 function MainContent() {
     return (
@@ -6,6 +7,8 @@ function MainContent() {
 }
 
 // ReactDOM.render(<MainContent/>, document.getElementById("root"))
+
+// A variable with JSX:
 
 const element = (
     <div>
