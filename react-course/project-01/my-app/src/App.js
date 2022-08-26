@@ -1,22 +1,22 @@
 import './App.css';
+import logo from './react-logo.png';
 
 function Header() {
   return (
       <header>
-          <img src="./react-logo.png" alt="logo"/>
-          <ul className="navbar">
-              <li>Pricing</li>
-              <li>About</li>
-              <li>Contact</li>
-          </ul>
+        <img src={logo} alt="logo"/>
+        <div class="titles">
+          <h3>ReactFacts</h3>
+          <h4>React Course - Project 1</h4>
+        </div>
       </header>
   )
 }
 
 function List() {
   return (
-      <div className="main">
-          <h1>Reasons I'm excited to learn React</h1>
+      <main>
+          <h1>Fun facts about React</h1>
           <ul className="list">
               <li>Was first released in 2013</li>
               <li>Was originally created by Jordan Walke</li>
@@ -24,13 +24,7 @@ function List() {
               <li>Is maintained by Facebook</li>
               <li>Powers Thousands of enterprise apps, including mobile apps</li>
           </ul>
-      </div>
-  )
-}
-
-function Foot() {
-  return (
-      <p className="foot">2021 Ziroll development. All rights reserved.</p>
+      </main>
   )
 }
 
@@ -39,7 +33,6 @@ function App() {
     <div className="App">
         <Header />
         <List />
-        <Foot />
     </div>
   );
 }

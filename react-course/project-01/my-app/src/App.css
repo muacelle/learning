@@ -1,34 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
-html, body {
+body {
   margin: 0;
-  padding: 0;
-  font-size: 1.2rem;
-}
-
-img {
-  width: 5%;
-  margin: 5px 10px;
-}
-
-header, .navbar {
-  display: flex;
-  width: 100%;
-  list-style: none;
+  font-family: Inter, sans-serif;
+  background: #282D35;
 }
 
 header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #21222A;
+  padding: 20px 20px;
+}
+
+.titles {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-  background: rgb(238, 238, 238);
 }
 
-.navbar {
-  width: 30%;
-  justify-content: space-around;
+header > img {
+  height: 50px;
+  margin: auto 15px;
 }
 
-.main, .foot {
-  margin: 20px 20px;
+h3 {
+  margin: 0;
+  color: #61DAFB;
+  font-size: 26px;
+}
+
+h4 {
+  margin: 0;
+  color: #DEEBF8;
+  align-self: center;
+  font-size: 18px;
+}
+
+main {
+  color: #FFFFFF;
+  padding: 50px 40px;
+  background-image: url('./react-icon-large.png');
+  background-repeat: no-repeat;
+  background-position: right 100%;
+}
+
+h1 {
+  margin: 0;
+  font-size: 44px;
+  letter-spacing: -0.05em;
+}
+
+li {
+  font-size: 20px;
+  line-height: 200%;
+}
+
+::marker {
+  color: #61DAFB;
+  font-size: 1.7rem;
 }
