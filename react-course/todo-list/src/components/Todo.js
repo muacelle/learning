@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 export default function Todo() {
 
@@ -6,7 +6,6 @@ export default function Todo() {
 
     let [list, setList] = useState(storedList)
     let [newItem, setNewItem] = useState('')
-    console.log(list)
 
     return (
         <div className="container">
@@ -19,15 +18,16 @@ export default function Todo() {
                 value={newItem}
                 placeholder="New task..."
                 onChange={value => setNewItem(value.target.value)}
+                onKeyDown={(key) => isEnter(key)}
             />
 
-            <button className="btn" onClick={addNewItem}>Add</button>
+            <button className="add-btn" onClick={addNewItem}>Add</button>
 
             <ul className='list'>
                 {list.map((item, index) => (
                     <li>
                         {item}
-                        <button onClick={() => deleteItem(index)}> x </button>
+                        <button className="del-btn" onClick={() => deleteItem(index)}> x </button>
                     </li>
                 ))}
             </ul>
@@ -36,6 +36,10 @@ export default function Todo() {
     )
 
     function addNewItem() {
+        if (newItem.length <= 0) {
+            alert('Você não digitou uma tarefa. :(')
+            return;
+        }
         setList([...list, newItem]);
         setNewItem('');
         saveLocalStorage([...list, newItem])
@@ -46,6 +50,12 @@ export default function Todo() {
         tempArr.splice(index, 1);
         setList(tempArr);
         saveLocalStorage(tempArr);
+    }
+    
+    function isEnter(e) {
+        if (e.key == 'Enter') {
+            addNewItem()
+        }
     }
 
     function saveLocalStorage(value) {
