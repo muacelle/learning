@@ -36,7 +36,7 @@ export default function Todo() {
     )
 
     function addNewItem() {
-        if (newItem.length <= 0) {
+        if (!newItem.length) {
             alert('Você não digitou uma tarefa. :(')
             return;
         }
